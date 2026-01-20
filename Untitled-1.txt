@@ -1,0 +1,12 @@
+├── .github/              # Untuk template kontribusi
+├── edukasi/              # Info seputar hak, aksesibilitas, & tips
+│   ├── fisik.md
+│   ├── sensorik.md
+│   └── regulasi.md
+├── karya/                # Ruang pameran kawan-kawan
+│   ├── teks/             # Puisi, artikel, cerita pendek
+│   ├── galeri/           # Foto karya (wajib ada deskripsi teks/Alt-text)
+│   ├── audio/            # Link podcast/musik (disertai transkrip)
+│   └── video/            # Link video (disertai takarir/subtitle)
+├── README.md             # Halaman utama (Etalase toko & informasi)
+└── CONTRIBUTING.md       # Panduan cara mengirimkan karya

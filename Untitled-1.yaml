@@ -1,0 +1,32 @@
+name: Update Gallery List
+on:
+  push:
+    paths:
+      - 'karya/teks/**'
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Generate Karya List
+        run: |
+          echo "## ✍️ Daftar Karya Terbaru" > list_karya.txt
+          ls karya/teks/*.md | xargs -n 1 basename | sed 'Untitled-4.md//' | awk '{print "- ["$0"](.Untitled-4"$0".md)"}' >> list_karya.txt
+          
+      - name: Write to README
+        run: |
+          # Script ini akan menyisipkan daftar karya ke dalam README.md
+          sed -i '//,//d' README.md
+          echo "" >> README.md
+          cat list_karya.txt >> README.md
+          echo "" >> README.md
+          
+      - name: Commit changes
+        run: |
+          git config --local user.email "Dadenarga@github.com"
+          git config --local user.name "Dadenarga"
+          git add README.md
+          git commit -m "Update daftar karya otomatis"
+          git push
